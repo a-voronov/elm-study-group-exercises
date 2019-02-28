@@ -1,3 +1,5 @@
+module Main exposing (..)
+
 {- * Homework Week 1 * -}
 
 {- Just for fun -}
