@@ -1,3 +1,6 @@
+{- * Homework Week 1 * -}
+
+
 module Main exposing
     ( butLast1
     , butLast2
@@ -21,7 +24,7 @@ module Main exposing
     , words
     )
 
-{- * Homework Week 1 * -} {- Just for fun -}
+{- Just for fun -}
 
 
 lfold : (a -> b -> b) -> b -> List a -> b
@@ -239,13 +242,11 @@ dropEvery : Int -> String -> String
 dropEvery number string =
     let
         iterator char ( pos, str ) =
-            ( pos + 1
-            , if remainderBy number pos == 0 then
-                str
+            if pos == number then
+                ( 1, str )
 
-              else
-                str ++ String.fromChar char
-            )
+            else
+                ( pos + 1, str ++ String.fromChar char )
     in
     String.foldl iterator ( 1, "" ) string |> Tuple.second
 
