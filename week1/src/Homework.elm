@@ -1,7 +1,7 @@
 {- * Homework Week 1 * -}
 
 
-module Main exposing
+module Homework exposing
     ( butLast1
     , butLast2
     , clap1
