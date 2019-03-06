@@ -256,14 +256,10 @@ catMaybes =
 
 buildStatsUrl : Int -> { startDate : Maybe String, numElems : Maybe Int } -> String
 buildStatsUrl itemId ps =
-    let
-        urlWithId id =
-            "https://myapi.com/api/item/" ++ String.fromInt id ++ "/stats.json"
-
-        queryParams =
-            catMaybes <|
-                Maybe.map (string "start_date") ps.startDate
-                    :: Maybe.map (int "num_elems") ps.numElems
-                    :: []
-    in
-    urlWithId itemId ++ toQuery queryParams
+    "https://myapi.com"
+        ++ Url.Builder.absolute [ "api", "item", String.fromInt itemId, "stats.json" ]
+            (catMaybes
+                [ Maybe.map (string "start_date") ps.startDate
+                , Maybe.map (int "num_elems") ps.numElems
+                ]
+            )
