@@ -1,7 +1,29 @@
 {- * Homework Week 2 * -}
 
 
-module Homework exposing (Address, ConvertUser, Profile, User, apply, bird, bird2, bird3, buildStatsUrl, catMaybes, convert, convert021, convert022, convert031, convert032, flip, map, mapMaybes, setPhone)
+module Homework exposing
+    ( Address
+    , ConvertUser
+    , Profile
+    , User
+    , apply
+    , apply2
+    , bird
+    , bird2
+    , bird3
+    , buildStatsUrl
+    , catMaybes
+    , convert
+    , convert021
+    , convert022
+    , convert023
+    , convert031
+    , convert032
+    , flip
+    , map
+    , mapMaybes
+    , setPhone
+    )
 
 import Url.Builder exposing (..)
 
@@ -99,6 +121,25 @@ convert022 =
         -> Maybe (Maybe b)
 
 -}
+-- III
+
+
+apply2 : Maybe a -> Maybe (a -> b) -> Maybe b
+apply2 =
+    Maybe.map2 (|>)
+
+
+convert023 : List { name : Maybe String, email : Maybe String } -> List ConvertUser
+convert023 =
+    List.filterMap
+        (\record ->
+            Just ConvertUser
+                |> apply2 record.name
+                |> apply2 record.email
+        )
+
+
+
 {- Fill in missing emails with <unspecified>, while removing elements with no name -}
 -- I
 
