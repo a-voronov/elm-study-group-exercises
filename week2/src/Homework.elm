@@ -241,6 +241,21 @@ mapMaybes f =
     List.filterMap f
 
 
+mapMaybes2 : (a -> Maybe b) -> List a -> List b
+mapMaybes2 f list =
+    case list of
+        [] ->
+            []
+
+        x :: xs ->
+            case f x of
+                Nothing ->
+                    mapMaybes2 f xs
+
+                Just y ->
+                    y :: mapMaybes2 f xs
+
+
 
 {- catMaybes -}
 
@@ -248,6 +263,21 @@ mapMaybes f =
 catMaybes : List (Maybe a) -> List a
 catMaybes =
     List.filterMap identity
+
+
+catMaybes2 : List (Maybe a) -> List a
+catMaybes2 list =
+    case list of
+        [] ->
+            []
+
+        x :: xs ->
+            []
+
+
+catMaybes3 : List (Maybe a) -> List a
+catMaybes3 =
+    mapMaybes2 identity
 
 
 
