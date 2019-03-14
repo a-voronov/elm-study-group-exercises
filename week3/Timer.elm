@@ -112,7 +112,7 @@ update msg model =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    Time.every (toFloat <| constants.step * constants.milliseconds) UpdateCurrentTime
+    Time.every (toFloat <| constants.step * 100) UpdateCurrentTime
 
 
 
